@@ -31,6 +31,8 @@ namespace MonitorShot
         {
             this.embedTime = new System.Windows.Forms.CheckBox();
             this.showCursorPosition = new System.Windows.Forms.CheckBox();
+            this.shotButton = new System.Windows.Forms.Button();
+            this.logTextBox = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // embedTime
@@ -57,11 +59,34 @@ namespace MonitorShot
             this.showCursorPosition.Text = "カーソル位置を表示";
             this.showCursorPosition.UseVisualStyleBackColor = true;
             // 
+            // shotButton
+            // 
+            this.shotButton.Font = new System.Drawing.Font("MS UI Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.shotButton.Location = new System.Drawing.Point(161, 12);
+            this.shotButton.Name = "shotButton";
+            this.shotButton.Size = new System.Drawing.Size(225, 38);
+            this.shotButton.TabIndex = 2;
+            this.shotButton.Text = "スクショ取得";
+            this.shotButton.UseVisualStyleBackColor = true;
+            this.shotButton.Click += new System.EventHandler(this.shotButton_Click);
+            // 
+            // logTextBox
+            // 
+            this.logTextBox.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.logTextBox.Location = new System.Drawing.Point(0, 69);
+            this.logTextBox.Multiline = true;
+            this.logTextBox.Name = "logTextBox";
+            this.logTextBox.ReadOnly = true;
+            this.logTextBox.Size = new System.Drawing.Size(398, 94);
+            this.logTextBox.TabIndex = 3;
+            // 
             // MonitorShotForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(204, 73);
+            this.ClientSize = new System.Drawing.Size(398, 163);
+            this.Controls.Add(this.logTextBox);
+            this.Controls.Add(this.shotButton);
             this.Controls.Add(this.showCursorPosition);
             this.Controls.Add(this.embedTime);
             this.Name = "MonitorShotForm";
@@ -76,6 +101,8 @@ namespace MonitorShot
 
         private System.Windows.Forms.CheckBox embedTime;
         private System.Windows.Forms.CheckBox showCursorPosition;
+        private System.Windows.Forms.Button shotButton;
+        private System.Windows.Forms.TextBox logTextBox;
     }
 }
 

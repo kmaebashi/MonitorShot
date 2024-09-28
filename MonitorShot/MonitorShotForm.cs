@@ -58,6 +58,11 @@ namespace MonitorShot
         {
             Console.WriteLine("CaptureKeyPressed");
 
+            ShotMonitor();
+        }
+
+        private void ShotMonitor()
+        {
             Screen screen = Screen.AllScreens[targetScreen - 1];
             Bitmap bitmap = new Bitmap(screen.Bounds.Width, screen.Bounds.Height);
             DateTime now = DateTime.Now;
@@ -74,9 +79,10 @@ namespace MonitorShot
                     DrawCursorPosition(g, screen);
                 }
             }
-            string fileName = this.serialNumber.ToString("0000") + "_" + now.ToString("yyyyMMddHHmmss");
+            string fileName = this.serialNumber.ToString("0000") + "_" + now.ToString("yyyyMMddHHmmss") + ".png";
+            logTextBox.AppendText(fileName + "\r\n");
             this.serialNumber++;
-            bitmap.Save(Path.Combine(this.savePath, fileName) + ".png", ImageFormat.Png);
+            bitmap.Save(Path.Combine(this.savePath, fileName), ImageFormat.Png);
 
             this.shutterForm.Show();
             Timer timer = new Timer();
@@ -117,6 +123,11 @@ namespace MonitorShot
         private void MonitorShotForm_FormClosing(object sender, FormClosingEventArgs e)
         {
             KeyHook.EndHook();
+        }
+
+        private void shotButton_Click(object sender, EventArgs e)
+        {
+            ShotMonitor();
         }
     }
 }
